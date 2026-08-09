@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Happy Birthday Solen ❤️</title>
+    <title>Happy Birthday Solen!</title>
 
     <style>
         * {
@@ -14,43 +13,55 @@
         body {
             margin: 0;
             min-height: 100vh;
-            background: #E63946;
+            background: linear-gradient(135deg, #E63946, #1E1E2E);
             font-family: Arial, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             text-align: center;
-            color: white;
+            overflow: hidden;
         }
 
         .container {
             width: 90%;
-            max-width: 600px;
+            max-width: 500px;
         }
 
         h1 {
+            color: white;
             font-size: 38px;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
+            animation: birthday 0s infinite alternate;
+        }
+
+        @keyframes birthday {
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(1.08);
+            }
         }
 
         video {
             width: 100%;
-            max-height: 65vh;
+            max-height: 60vh;
             border-radius: 15px;
             display: none;
-            background: black;
             margin-bottom: 20px;
         }
 
         button {
-            border: none;
-            padding: 15px 30px;
-            border-radius: 30px;
             background: white;
-            color: #E63946;
+            color: #ff5c8a;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 30px;
             font-size: 18px;
             font-weight: bold;
             cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
 
         button:active {
@@ -58,9 +69,23 @@
         }
 
         #message {
-            display: none;
+            color: white;
             font-size: 20px;
-            margin-top: 15px;
+            margin-top: 20px;
+            display: none;
+            animation: fadeIn 2s;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
@@ -69,36 +94,36 @@
 
     <div class="container">
 
-        <h1>🎂 Happy Birthday, Solen! ❤️</h1>
+        <h1>🎂 Happy Birthday, Solen! 🎉</h1>
 
-        <button onclick="startVideo()">
-            ▶️ Play Birthday Video
-        </button>
-
-        <video id="birthdayVideo" controls playsinline>
-            <source src="./birthday-1.mp4" type="video/mp4">
+        <video id="birthdayVideo" controls>
+            <source src="birthday.mp4" type="video/mp4">
             
         </video>
 
+        <button id="playButton" onclick="playBirthday()">
+            ▶ Play Birthday Video
+        </button>
+
         <div id="message">
-            🎉 Hope you have an amazing birthday! ❤️
+            💖 I hope you have an amazing birthday, Solen! 🎈
         </div>
 
     </div>
 
     <script>
-        function startVideo() {
+        function playBirthday() {
             const video = document.getElementById("birthdayVideo");
+            const button = document.getElementById("playButton");
             const message = document.getElementById("message");
 
             video.style.display = "block";
             message.style.display = "block";
 
-            video.currentTime = 0;
+            video.play();
 
-            video.play().catch(function(error) {
-                console.log("Video could not autoplay:", error);
-            });
+            button.innerHTML = "🎬 Playing...";
+            button.style.display = "none";
         }
     </script>
 
